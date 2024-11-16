@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Cure - Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+     <!-- Navigation Bar -->
+     <nav class="navbar">
+        <div class="logo-container">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='Plant-Logo.svg') }}" alt="Plant Logo" class="plant-logo">
+            </a>
+            <p>AgriIntel</p>
+        </div>
+        <ul class="navbar-list">
+            <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+            <li><a href="{{ url_for('disease_detector') }}" class="nav-link">Disease Detector</a></li>
+            <li><a href="{{ url_for('information') }}" class="nav-link">About Us</a></li>
+            <li><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+            <li><a href="{{ url_for('achievement') }}" class="nav-link login-link">Achievements</a></li>
+        </ul>
+    </nav>
+
+    <!-- Background overlay -->
+    <div class="background"></div>
+
+    <!-- Result container -->
+    <div class="upload-container glassy result-container">
+        <h1>Disease Detection Result</h1>
+            <p>Predicted Disease: <strong>{{ prediction }}</strong></p>
+            <p>Confidence Level: <strong>{{ confidence }}%</strong></p>
+            <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image" class="uploaded-image">
+        <a href="{{ url_for('disease_detector') }}" class="upload-another-button">Upload Another Image</a>
+
+        <!-- Know More Button -->
+        <a href="{{ url_for('cure') }}?disease={{ prediction }}" class="know-more-button">Know More</a>
+        
+    </div>
+</body>
+</html>

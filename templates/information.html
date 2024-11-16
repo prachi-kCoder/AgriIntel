@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='Plant-Logo.svg') }}" alt="Plant Logo" class="plant-logo">
+            </a>
+            <p>AgriIntel</p>
+        </div>
+        <ul class="navbar-list">
+            <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+            <li><a href="{{ url_for('disease_detector') }}" class="nav-link">Disease Detector</a></li>
+            <li><a href="{{ url_for('information') }}" class="nav-link">About Us</a></li>
+            <li><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+            <li><a href="{{ url_for('achievement') }}" class="nav-link login-link">Achievements</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Background overlay for style and emphasis -->
+    <div class="background"></div>
+    
+    <main class="about-container glassy">
+        <section class="intro-section">
+            <h2>About PlantDiseaseCure</h2>
+            <p>At <strong>AgriIntel</strong>, our mission is to empower farmers through cutting-edge AI technology. We provide intuitive and reliable tools that enable early disease detection, ensuring healthier crops, reduced losses, and enhanced agricultural productivity.</p>
+        </section>
+    
+        <section class="vision-section">
+            <h3>Our Vision</h3>
+            <p>We strive to create a future where farmers have the knowledge and resources to take immediate action against plant diseases. By harnessing the power of AI, we aim to foster a sustainable, eco-friendly, and productive agricultural landscape.</p>
+        </section>
+    
+        <section class="team-section">
+            <h3>Meet Our Expert Team</h3>
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-member">
+                    <picture>
+                        <source srcset="{{ url_for('static', filename='Engineer.avif') }}" type="image/avif">
+                        <img src="{{ url_for('static', filename='Engineer.avif') }}" alt="Farmer 1" class="farmer-photo">
+                    </picture>
+                    <h4>Dr. Stief Singh</h4>
+                    <p><strong>Chief AI Specialist</strong></p>
+                    <p>Ph.D. in Computer Vision, MIT</p>
+                    <p>Dr. Singh leads our AI research, focusing on disease detection models to provide accurate and timely insights for farmers.</p>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-member">
+                    <source srcset="{{ url_for('static', filename='farmEng.avif') }}" type="image/avif">
+                        <img src="{{ url_for('static', filename='farmEng.avif') }}" alt="Farmer 1" class="farmer-photo">
+                    <h4>Ravi Patel</h4>
+                    <p><strong>Lead Software Engineer</strong></p>
+                    <p>M.S. in Software Engineering, Stanford</p>
+                    <p>With a passion for user-centric design, Ravi ensures a seamless and efficient user experience for our platform.</p>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-member">
+                    <source srcset="{{ url_for('static', filename='FarmEngineer.avif') }}" type="image/avif">
+                        <img src="{{ url_for('static', filename='FarmEngineer.avif') }}" alt="Farmer 1" class="farmer-photo">
+                    <h4>Aisha Verma</h4>
+                    <p><strong>Content & Outreach Specialist</strong></p>
+                    <p>B.A. in Agricultural Communications, UC Davis</p>
+                    <p>Aisha is dedicated to creating educational materials and guiding farmers on how to leverage our tools for optimal results.</p>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="team-member">
+                    <source srcset="{{ url_for('static', filename='FarmSpecialist.avif') }}" type="image/avif">
+                        <img src="{{ url_for('static', filename='FarmSpecialist.avif') }}" alt="Farmer 1" class="farmer-photo">
+                    <h4>Samir Kumar</h4>
+                    <p><strong>Data Scientist</strong></p>
+                    <p>M.Sc. in Data Science, Oxford</p>
+                    <p>Samir specializes in data analytics, ensuring our models are trained with high-quality, diverse agricultural data.</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p>Connect with us and stay updated on our latest advancements in AI-driven agriculture.</p>
+            <div class="social-media-icons">
+                <a href="https://facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook"></i></a>
+                <a href="https://twitter.com" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </footer>
+    </main>
+    
+        
+</body>
+</html>

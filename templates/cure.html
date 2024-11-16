@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cure Information for {{ disease }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='Plant-Logo.svg') }}" alt="Plant Logo" class="plant-logo">
+            </a>
+            <p>AgriIntel</p>
+        </div>
+        <ul class="navbar-list">
+            <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+            <li><a href="{{ url_for('disease_detector') }}" class="nav-link">Disease Detector</a></li>
+            <li><a href="{{ url_for('information') }}" class="nav-link">About Us</a></li>
+            <li><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+            <li><a href="{{ url_for('achievement') }}" class="nav-link login-link">Achievements</a></li>
+        </ul>
+    </nav>
+
+    <!-- Background overlay -->
+    <div class="background"></div>
+
+    <div class="glassy upload-container">
+        <h1>{{ disease }} - Information and Cure</h1>
+    
+        <div class="disease-info-section">
+            <p class="disease-title"><strong>Description</strong></p>
+            <p>{{ description }}</p>
+        </div>
+    
+        {% if cause %}
+        <div class="disease-info-section">
+            <p class="disease-title"><strong>Cause</strong></p>
+            <p>{{ cause }}</p>
+        </div>
+        {% endif %}
+    
+        {% if symptoms %}
+        <div class="disease-info-section">
+            <p class="disease-title"><strong>Symptoms</strong></p>
+            <ul class="disease-list">
+                <li>{{ symptoms }}</li>
+                
+            </ul>
+        </div>
+        {% endif %}
+    
+        {% if prevention %}
+        <div class="disease-info-section">
+            <p class="disease-title"><strong>Prevention Tips</strong></p>
+            <ul class="disease-list">
+                {% for tip in prevention %}
+                    <li>{{ tip }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    
+        {% if treatment %}
+        <div class="disease-info-section">
+            <p class="disease-title"><strong>Treatment Steps</strong></p>
+            <ul class="disease-list">
+                {% for step in treatment %}
+                    <li>{{ step }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    
+        <a href="{{ url_for('disease_detector') }}" class="upload-another-button">Back to Disease Detector</a>
+    </div>
+</body>
+</html>
