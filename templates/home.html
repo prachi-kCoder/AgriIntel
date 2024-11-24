@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Cure - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+    <body>
+        <nav class="navbar">
+            <div class="logo-container">
+                <a href="{{ url_for('home') }}">
+                    <img src="{{ url_for('static', filename='Logo.jpg') }}" alt="Plant Logo" class="plant-logo">
+                </a>
+                <p>AgriIntel</p>
+            </div>
+            <ul class="navbar-list">
+                <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+                <li><a href="{{ url_for('disease_detector') }}" class="nav-link">Disease Detector</a></li>
+                <li><a href="{{ url_for('information') }}" class="nav-link">About Us</a></li>
+                <li><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+                <li><a href="{{ url_for('achievement') }}" class="nav-link login-link">Achievements</a></li>
+            </ul>
+        </nav>
+
+        <div class="background"></div>
+        <div class="main-container glassy homepage scrollable">
+            <h1>Welcome to Plant Disease Cure</h1>
+
+            <!-- Importance Section -->
+            <div class="importance-section">
+                <h2 class="description">Why AI-Driven Applications Are Important for Farmers:</h2>
+                <ul class="importance-list">
+                    <li>Improved crop monitoring and early disease detection.</li>
+                    <li>Enhanced decision-making with data-driven insights.</li>
+                    <li>Optimized use of resources, reducing waste and costs.</li>
+                    <li>Increased crop yield and sustainable farming practices.</li>
+                </ul>
+            </div>
+
+            <p class="importance-aim">Empowering farmers with AI-driven solutions to diagnose plant diseases.</p>
+            <p><a href="{{ url_for('disease_detector') }}" class="start-button nav-link">Start Detecting Diseases</a></p>
+
+            <!-- Statistics Section -->
+            <div class="statistics-section glassy">
+                <h2>How AI Makes a Difference ?</h2>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>30% Increase</h3>
+                        <p>in Crop Yields</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>40% Reduction</h3>
+                        <p>in Pesticide Use</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>95% Accuracy</h3>
+                        <p>in Disease Detection</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>20,000+</h3>
+                        <p>Farmers Benefited</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>50% Time Savings</h3>
+                        <p>for Farmers</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>10x Faster</h3>
+                        <p>Disease Diagnosis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

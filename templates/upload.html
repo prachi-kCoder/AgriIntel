@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Cure - Upload</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='Logo.jpg') }}" alt="Plant Logo" class="plant-logo">
+            </a>
+            <p>AgriIntel</p>
+        </div>
+        <ul class="navbar-list">
+            <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+            <li><a href="{{ url_for('disease_detector') }}" class="nav-link">Disease Detector</a></li>
+            <li><a href="{{ url_for('information') }}" class="nav-link">About Us</a></li>
+            <li><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+            <li><a href="{{ url_for('achievement') }}" class="nav-link login-link">Achievements</a></li>
+            <p>AgriIntel</p>
+        </ul>
+    </nav>
+
+    <!-- Background overlay for style and emphasis -->
+    <div class="background"></div>
+
+    <!-- Main container for the upload form -->
+    <div class="upload-container glassy">
+        <h1>Upload Plant Image for Disease Detection</h1>
+        
+        <!-- Form for file upload -->
+        <form action="/upload" method="post" enctype="multipart/form-data" class="upload-form">
+            <div id="fileUploadSection" class="file-upload">
+                <input type="file" name="file" accept="image/*" required id="fileInput" class="hidden-input">
+                <div class="file-upload-container">
+                    <span id="fileName" class="choose-file"> No File Chosen </span>
+                    <button type="button" id="fileUploadButton" class="browse-button">Choose File </button> 
+                </div>
+            </div>
+            <div id="errorMessage" class="error-message" style="color: black;  font-size: larger; display: none;"></div>
+            <button type="submit"  id="analyseButton" class="upload-button">Analyse</button>
+        </form>
+
+        <!-- Retry Button -->
+        <button id="retryButton" class="retry-button" style="display: none;" onclick="redirectToDetector()">Try Again</button>
+        <!-- Preview and placeholder before uploading -->
+        <div id="preview" class="preview">
+            <p class="quote">Empowering Farmers with AI-driven Plant Disease Detection!</p>
+            <p class="description">Upload a plant image to get insights into possible diseases affecting your crops.</p>
+        </div>
+    </div>
+
+
+    <!-- JavaScript for handling file input and preview -->
+    <script>
+        const allowedExtensions = ['png', 'jpg', 'jpeg'];
+        const fileUploadSection = document.getElementById('fileUploadSection');
+        const analyseButton = document.getElementById('analyseButton');
+        const errorMessage = document.getElementById('errorMessage');
+        const fileNameDisplay = document.getElementById('fileName');
+        const preview = document.getElementById('preview');
+        const retryButton = document.getElementById('retryButton');
+        // Trigger file input on button click
+        document.getElementById('fileUploadButton').addEventListener('click', function() {
+            document.getElementById('fileInput').click();
+        });
+        // Redirect to /disease-detector
+        function redirectToDetector() {
+            window.location.href = '/disease-detector';
+        }
+        // Update file name display and preview image with validation
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+
+            if (file) {
+                // Extract file extension
+                const fileExtension = file.name.split('.').pop().toLowerCase();
+
+                 // Validate file extension
+                if (!allowedExtensions.includes(fileExtension)) {
+                    // Show error message
+                    errorMessage.style.display = 'block';
+                    errorMessage.textContent = 'Unsupported file format. Please upload a PNG, JPG, or JPEG image.';
+
+                    // Hide "Choose File" section and "Analyse" button
+                    fileUploadSection.style.display = 'none';
+                    analyseButton.style.display = 'none';
+
+                    // Show retry button
+                    retryButton.style.display = 'block';
+                    // Clear file name and preview
+                    fileNameDisplay.textContent = '';
+                    preview.innerHTML = '';
+                    return;
+                }
+
+                    // Clear error message if valid
+                errorMessage.style.display = 'none';
+                errorMessage.textContent = '';
+
+                // Show "Choose File" section and "Analyse" button
+                fileUploadSection.style.display = 'block';
+                analyseButton.style.display = 'block';
+
+                // Hide retry button
+                retryButton.style.display = 'none';
+                // Display file name
+                fileNameDisplay.textContent = file.name;
+
+                // Preview the image
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.innerHTML = `
+                        <img src="${e.target.result}" alt="Image preview" class="preview-image" />
+                    `;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+    </script>
+</body>
+</html>
